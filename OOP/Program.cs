@@ -3,14 +3,44 @@ using System.Collections;
 using OOP.Inheritance;
 using OOP.Polymorphism;
 using OOP.Interfaces;
+using OOP.Enums;
+using OOP.Generics;
 
 namespace OOP
 {
     class Program
     {
         static void Main(string[] args)
-        {             
-            
+        {
+            #region Enumeration
+
+            OOP.Enums.BorderSide topSide = Enums.BorderSide.Top;
+            bool isTop = (topSide == OOP.Enums.BorderSide.Top);
+            Console.WriteLine(isTop);
+            Console.WriteLine($"topSide is {topSide}");
+            Console.WriteLine($"BorderSide is {BorderSide.Top}" );
+            Console.WriteLine($"Size of BorderSide enum is {sizeof(BorderSide)}");
+            #endregion
+
+
+            #region Generisc
+            var stack = new OOP.Generics.Stacks<int>();
+            stack.Push(5);
+            stack.Push(6);
+            stack.Push(7);
+            Console.WriteLine($"Stack member is {stack.Pop()}, {stack.Pop()}");
+
+            var stackString = new OOP.Generics.Stacks<string>();
+            stackString.Push("Armenia");
+           // stackString.Push(string.Empty);
+            stackString.Push("South Korea");
+            Console.WriteLine($"{stackString.Pop()}, {stackString.Pop()}");
+
+
+
+            #endregion
+
+
             #region Inheritance
             OOP.Inheritance.Car car = new OOP.Inheritance.Car();
             car.Speed = 60;
@@ -22,6 +52,20 @@ namespace OOP
 
             OOP.Inheritance.Manager garegin = new OOP.Inheritance.Manager("Garegin", age: 42, salary: 1_800_000, ssn: "12345678", stopOptions: 1500);
             OOP.Inheritance.SalesPerson marine = new OOP.Inheritance.SalesPerson();
+
+
+
+            IEnumerator ie = new OOP.Interfaces.Countdown();
+
+            while (ie.MoveNext())
+            {
+                Console.WriteLine(ie.Current);
+            }
+
+
+
+            ((OOP.Interfaces.ILogger)new OOP.Interfaces.Countdown()).Log("message");
+
             #endregion
 
 
