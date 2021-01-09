@@ -16,6 +16,7 @@ namespace OOP
         public delegate int BinaryOp(int x, int y);
         #endregion
 
+
         #region Lambdas
 
         public delegate void PrintDelegate(string message);
@@ -83,6 +84,7 @@ namespace OOP
             //cars.SpeedChanged += Program.OnCarSpeedChanged;
             #endregion
 
+
             #region Enumeration
             Console.WriteLine("Enumeration");
             OOP.Enums.BorderSide topSide = Enums.BorderSide.Top;
@@ -139,6 +141,22 @@ namespace OOP
 
             #endregion
 
+
+            #region Interfaces
+            Console.WriteLine("Interface");
+            double totalArea = 0;
+            foreach (OOP.Interfaces.Shape shapee in LoadShapesFromDatabaseI())
+            {
+               shapee.Print();
+                totalArea += shapee.Area;
+            }
+
+            Console.WriteLine();
+            Console.WriteLine($"Total area: {totalArea}");
+
+            #endregion
+
+
             #region Lambdas
             Console.WriteLine("Lambdas");
             //C# 1.0
@@ -182,6 +200,7 @@ namespace OOP
 
             #endregion
 
+
             #region Polymorphism
             Console.WriteLine("Polymorphism");
             OOP.Polymorphism.Circle circle = new OOP.Polymorphism.Circle(1);
@@ -223,22 +242,7 @@ namespace OOP
             //{
             //    Console.WriteLine($"A {shape} with area {shape.GetArea()} and perimeter {shape.Perimeter}");
             //}
-            #endregion
-
-
-            #region Interfaces
-            Console.WriteLine("Interface");
-            double totalArea = 0;
-            foreach (OOP.Interfaces.Shape shapee in LoadShapesFromDatabaseI())
-            {
-               shapee.Print();
-                totalArea += shapee.Area;
-            }
-
-            Console.WriteLine();
-            Console.WriteLine($"Total area: {totalArea}");
-
-            #endregion
+            #endregion                      
 
         }
 
@@ -283,35 +287,8 @@ namespace OOP
         }
         #endregion
 
-        #region Lambdas
-        private static Action ClosureSample()
-        {
-            int local = 0;
-            Action action = () => Console.WriteLine($"Value: {local}");
-
-            local = 1;
-            return action;
-        }
-        #endregion
-
-        #region Polymorphism
-        private static OOP.Polymorphism.Shape[] LoadShapesFromDatabaseP()
-        {
-            return new OOP.Polymorphism.Shape[]
-                {
-                    new OOP.Polymorphism.Rectangle(1, 2), //2 folders contain same class, so we must specify the place
-                    new OOP.Polymorphism.Circle(1), 
-                    new OOP.Polymorphism.Square(2),
-                    new OOP.Polymorphism.Rectangle(3, 4),
-                    new OOP.Polymorphism.RightTriangle(3, 4),
-                };            
-        }
-
-        #endregion
-
 
         #region Interfaces
-
         static OOP.Interfaces.Shape[] LoadShapesFromDatabaseI()
         {
             return new OOP.Interfaces.Shape[]
@@ -331,7 +308,6 @@ namespace OOP
             yield return new OOP.Interfaces.Circle(3);
         }
 
-
         static IEnumerable Fibonacci()
         {
             int f1 = 0, f2 = 1;
@@ -344,8 +320,35 @@ namespace OOP
                 yield return f1;
             }
         }
-
         #endregion
+
+
+        #region Lambdas
+        private static Action ClosureSample()
+        {
+            int local = 0;
+            Action action = () => Console.WriteLine($"Value: {local}");
+
+            local = 1;
+            return action;
+        }
+        #endregion
+
+
+        #region Polymorphism
+        private static OOP.Polymorphism.Shape[] LoadShapesFromDatabaseP()
+        {
+            return new OOP.Polymorphism.Shape[]
+                {
+                    new OOP.Polymorphism.Rectangle(1, 2), //2 folders contain same class, so we must specify the place
+                    new OOP.Polymorphism.Circle(1), 
+                    new OOP.Polymorphism.Square(2),
+                    new OOP.Polymorphism.Rectangle(3, 4),
+                    new OOP.Polymorphism.RightTriangle(3, 4),
+                };            
+        }
+
+        #endregion        
 
     }
 }
