@@ -190,7 +190,6 @@ namespace OOP
 
             local = 1;
             action();
-
             #endregion
 
 
