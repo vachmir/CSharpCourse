@@ -18,7 +18,6 @@ namespace OOP
 
 
         #region Lambdas
-
         public delegate void PrintDelegate(string message);
         private static void PrintMethod(string message)
         {
@@ -109,7 +108,6 @@ namespace OOP
            // stackString.Push(string.Empty);
             stackString.Push("South Korea");
             Console.WriteLine($"{stackString.Pop()}, {stackString.Pop()}");
-
             #endregion
 
 
@@ -127,7 +125,6 @@ namespace OOP
             OOP.Inheritance.SalesPerson marine = new OOP.Inheritance.SalesPerson();
 
 
-
             IEnumerator ie = new OOP.Interfaces.Countdown();
 
             while (ie.MoveNext())
@@ -136,9 +133,7 @@ namespace OOP
             }
 
 
-
             ((OOP.Interfaces.ILogger)new OOP.Interfaces.Countdown()).Log("message");
-
             #endregion
 
 
@@ -153,7 +148,6 @@ namespace OOP
 
             Console.WriteLine();
             Console.WriteLine($"Total area: {totalArea}");
-
             #endregion
 
 
@@ -188,9 +182,8 @@ namespace OOP
             foreach (int number in evenNumbers)
                 Console.Write($"{number}, ");
             Console.WriteLine();
-                    
 
-             int denominator = int.Parse(Console.ReadLine());
+            int denominator = int.Parse(Console.ReadLine());
 
             int local = 0;
             Action action = () => Console.WriteLine($"Value: {local}");
@@ -347,7 +340,6 @@ namespace OOP
                     new OOP.Polymorphism.RightTriangle(3, 4),
                 };            
         }
-
         #endregion        
 
     }
